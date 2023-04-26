@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>리액트 1분만에 추가해보기!</title>
+	<!-- React 코어, 주로 UI 구성 요소를 만들고 관리하는 라이브러리 -->
+	<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+	<!-- React DOM, React 구성 요소를 DOM에 렌더링하는데 사용되는 라이브러리 -->
+	<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+	<!-- Babel, 여러 가지 프로그래밍 언어를 자바스크립트로 바꿔주는 라이브러리 -->
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+	<h1>내 html에 리액트 1분만에 추가해보기!</h1>
+	<p>단 1분만에 설치없이 리액트를 추가할 수 있다구요?</p>
+	<div id="root"></div>
+
+	<!-- type="text/babel" 넣어줘야 바벨 라이브러리가 해석 가능 -->
+	<script type="text/babel">
+		// React 컴포넌트 정의하기
+		const el = React.createElement;
+
+		class HelloButton extends React.Component {
+			constructor(props) {
+				super(props);
+
+				this.state = { liked: false };
+			}
+
+			render() {
+				if (this.state.liked) {
+					return 'Hello World!';
+				}
+
+				return (
+					// jsx
+					// jsx 안에서 자바스크립트 표현식을 쓰고 싶은면 {} 안에
+					<button onClick={() => this.setState({ liked: true })}>
+						Hello
+					</button>
+				);
+			}
+		}
+
+		// DOM에 리액트 컴포넌트 렌더링하기
+		const domContainer = document.querySelector('#root');
+		// (렌더링할 것, 렌더링할 대상)
+		ReactDOM.render(el(HelloButton), domContainer);
+	</script>
+</body>
+
+</html>
