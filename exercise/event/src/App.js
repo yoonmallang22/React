@@ -16,6 +16,8 @@ function App() {
   const [modalShow, setModalShow] = useState(true);
   // console.log(modalShow);
 
+  // setModalShow() 함수를 사용하는 함수
+  // 모달을 여러 개 사용할 경우 부모 컴포넌트에 두고 전달하여 재사용성을 높인다
   function modalClose() {
     setModalShow(false);
   }
