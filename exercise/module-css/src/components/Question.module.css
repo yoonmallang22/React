@@ -1,0 +1,15 @@
+.box {
+  background: pink;
+}
+
+.text {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  color: lemonchiffon;
+}
+
+/* module에서 태그로 지정해주고 싶은 경우 */
+.box p {
+  color: white;
+}
