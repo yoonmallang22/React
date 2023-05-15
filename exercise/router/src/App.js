@@ -27,7 +27,12 @@ function App() {
         {/* Router 중첩 */}
         <Route
           path="/three/*"
-          element={<Outlet />}
+          element={
+            <>
+              <Outlet />
+              threePage입니다.
+            </>
+          }
         >
           <Route
             path=""
@@ -46,6 +51,10 @@ function App() {
         <Route
           path="/blog/:id"
           element={<Blog />}
+        />
+        <Route
+          path="/blog/text"
+          element={<One />}
         />
       </Routes>
     </BrowserRouter>
@@ -76,8 +85,8 @@ function Blog() {
   console.log(path);
 
   // 파라미터만 잘라내주는 훅
-  const param = useParams();
-  console.log(param);
+  const { id } = useParams();
+  console.log(id);
 
   // 같은 컴포넌트를 불러와도 다른 모습으로 변경하는 것이 가능하다
   return <h1>hello Blog this is blog page {path}</h1>;
