@@ -8,6 +8,8 @@ import UseRefDOM from "./HookUseRef/UseRef2-DOM";
 import Context from "./HookUseContext/Context";
 import UseContext from "./HookUseContext/UseContext1";
 import Hello from "./HookUseContext/Hello";
+import CustomHook from "./CustomHook/CustomHook1";
+import CustomHook2 from "./CustomHook/CustomHook2";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
       <UseContext />
       {/* UseContext 파일 분리 */}
       <Hello />
+      <CustomHook />
+      <CustomHook2 />
     </>
   );
 }
