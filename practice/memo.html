@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메모장</title>
+</head>
+<body>
+    <div id="root"></div>
+		<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+		<!-- 트랜스파일러: 바벨 -->
+		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+		<script type="text/babel">
+			const {useState} = React;
+
+			function Memo({title, idx}) {
+				return (
+					<>
+						<div>{idx+1}번 메모</div>
+						<article>{title}</article>
+					</>
+				)
+			}
+			
+			function MemoList({titles}){
+				return (
+					<>
+						<h1>메모장 제목</h1>
+						{titles.map((title, idx) => {
+						return <Memo title={title} idx={idx} />
+					})}
+					</>
+				)
+			}
+			
+			function HomePage(params) {
+				const [memo, setMemo] = useState("");
+				const [memos, setMemos] = useState([]);
+				const onChangeHandler = (e) => {
+					// console.log(e.target.value);
+					setMemo(e.target.value);
+				};
+				const onClickButtonHandler = () => {
+					const newTitles = [...memos, memo];
+					setMemos(newTitles);
+				};
+				// console.log(memos);
+			
+				return (
+					<div>
+						<input type="text" onChange={onChangeHandler} />
+						<button onClick={onClickButtonHandler}>버튼</button>
+						<br />
+						{/* {} 안에는 값을 남겨주는거나 값이 들어가야 한다 */}
+						{/* {memos.map((title, idx)=>{
+							return (
+								<>
+									<div>{idx+1}번 메모</div>
+									<article>{title}</article>
+								</>
+							)
+						})} */}
+						{/* {memos.map((title, idx) => {
+							return <Memo title={title} idx={idx} />
+						})} */}
+						<MemoList titles={memos}/>
+					</div>
+				);
+			}
+			
+			function App() {
+				const root = ReactDOM.createRoot(document.getElementById("root"));
+				// const header = document.createElement("h1");
+				// header.innerText = "제목";
+				// root.appendChild(header);
+				// -> <h1>제목</h1> 한줄로 표현: 선언적이다
+				root.render(<HomePage/>);
+			}
+			
+			App();
+		</script>
+</body>
+</html>
